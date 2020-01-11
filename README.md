@@ -1,0 +1,2 @@
+# FarmClick
+Angular clicker game
