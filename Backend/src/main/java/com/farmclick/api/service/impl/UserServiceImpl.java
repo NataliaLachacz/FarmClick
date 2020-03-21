@@ -13,7 +13,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-
     @Override
     public User getUser(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id [" + id + "] not found."));

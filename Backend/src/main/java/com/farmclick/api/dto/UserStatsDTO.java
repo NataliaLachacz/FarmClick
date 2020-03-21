@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 public class UserStatsDTO {
 
     private String login;
+    private String email;
     private BigDecimal coins;
     private Long clicks;
 }
