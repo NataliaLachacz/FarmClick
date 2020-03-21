@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+  click: number;
 
-  constructor() { }
+  constructor() {}
+  ngOnInit(): void {}
 
-  ngOnInit() {
+  countClick(): number {
+    return this.click++;
   }
-
 }

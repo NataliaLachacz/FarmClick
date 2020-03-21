@@ -1,0 +1,7 @@
+{
+  "tslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "explorer.compactFolders": false
+}
