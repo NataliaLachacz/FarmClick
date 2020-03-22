@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
   selector: 'app-game',
@@ -6,12 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  click: number;
-
-  constructor() {}
-  ngOnInit(): void {}
-
-  countClick(): number {
-    return this.click++;
-  }
+  constructor(private counterService: CounterService) {}
+  ngOnInit() {}
 }

@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { Counter } from './../../store/models/counter.model';
-import { AppState } from './../../store/app.state';
+import { CounterService } from '../../services/counter.service';
 
 @Component({
   selector: 'app-footer',
@@ -12,11 +9,8 @@ import { AppState } from './../../store/app.state';
 })
 export class FooterComponent implements OnInit {
   faCog = faCog;
-  counter: Observable<Counter[]>;
 
-  constructor(private store: Store<AppState>) {
-    this.counter = store.select('counter');
-  }
+  constructor(private counterService: CounterService) {}
 
   ngOnInit() {}
 }

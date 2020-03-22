@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './store/reducer/counter.reducer';
 
 import { AppRoutingModule } from './components/app/app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -14,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { GameComponent } from './components/game/game.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CounterService } from './services/counter.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,12 +37,9 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    RouterModule.forRoot(appRoutes),
-    StoreModule.forRoot({
-      counter: counterReducer
-    })
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
