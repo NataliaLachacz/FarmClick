@@ -3,7 +3,7 @@ package com.farmclick.api.controller;
 import com.farmclick.api.dto.UserStatsDTO;
 import com.farmclick.api.model.User;
 import com.farmclick.api.service.UserService;
-import com.farmclick.api.transformer.UserStatsTransformer;
+import com.farmclick.api.transformer.GenericTransformer;
 import com.farmclick.security.AuthenticatedData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +23,6 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserStatsDTO getUserStats() {
         User user = userService.getUser(AuthenticatedData.getAuthenticatedToken().getId());
-        return new UserStatsTransformer().createDTO(user, UserStatsDTO.class);
+        return new GenericTransformer<User, UserStatsDTO>().createDTO(user, UserStatsDTO.class);
     }
 }
