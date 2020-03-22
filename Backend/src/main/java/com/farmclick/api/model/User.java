@@ -1,14 +1,18 @@
 package com.farmclick.api.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "Users")
+@EqualsAndHashCode
 public class User {
 
     @Id
@@ -31,4 +35,7 @@ public class User {
 
     @Column(name = "user_clicks")
     private Long clicks = 0L;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    Set<Plant> unlockedPlants = new HashSet<>();
 }
