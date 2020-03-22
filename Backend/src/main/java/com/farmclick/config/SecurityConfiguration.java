@@ -25,6 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/*").authenticated()
                 .and()
                 .addFilterBefore(new HeadersAuthenticationFilter(), BasicAuthenticationFilter.class);
+//                .antMatcher("/plant").anonymous();
     }
 
     @Override
