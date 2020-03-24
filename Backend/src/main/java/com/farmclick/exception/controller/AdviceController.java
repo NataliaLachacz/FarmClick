@@ -34,4 +34,12 @@ public class AdviceController {
         this.logError(exception);
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(SecurityException.class)
+    public ResponseEntity<ExceptionResponse> securityException(final SecurityException exception) {
+        String errorMessage = exception.toString();
+        ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.FORBIDDEN.value(), errorMessage);
+        this.logError(exception);
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
 }

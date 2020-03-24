@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GenericTransformerTest {
 
     @Test
-    void shouldCreateUserFromDTOWithGeneric(){
+    void shouldCreateUserFromDTOWithGeneric() {
         User user = new User();
         user.setLogin("Test");
         user.setClicks(250L);
@@ -24,7 +24,7 @@ class GenericTransformerTest {
     }
 
     @Test
-    void shouldCreateUserFromDTOWithDedicated(){
+    void shouldCreateUserFromDTOWithDedicated() {
         User user = new User();
         user.setLogin("Test");
         user.setClicks(250L);
