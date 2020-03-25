@@ -4,9 +4,9 @@ import com.farmclick.api.dto.UserStatsDTO;
 import com.farmclick.api.model.User;
 import com.farmclick.api.service.UserService;
 import com.farmclick.api.transformer.GenericTransformer;
-import com.farmclick.security.AuthenticatedData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -22,7 +22,8 @@ public class UserController {
     @GetMapping("/stats")
     @ResponseStatus(HttpStatus.OK)
     public UserStatsDTO getUserStats() {
-        User user = userService.getUser(AuthenticatedData.getAuthenticatedToken().getId());
+        String login = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUserByLogin("Worms308");
         return new GenericTransformer<User, UserStatsDTO>().createDTO(user, UserStatsDTO.class);
     }
 }

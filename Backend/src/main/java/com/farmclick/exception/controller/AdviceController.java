@@ -1,5 +1,6 @@
 package com.farmclick.exception.controller;
 
+import com.farmclick.exception.AuthenticationException;
 import com.farmclick.exception.ExceptionResponse;
 import com.farmclick.exception.PlantNotFoundException;
 import com.farmclick.exception.UserNotFoundException;
@@ -42,4 +43,13 @@ public class AdviceController {
         this.logError(exception);
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ExceptionResponse> authenticationException(final AuthenticationException exception) {
+        String errorMessage = exception.toString();
+        ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.BAD_REQUEST.value(), errorMessage);
+        this.logError(exception);
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
 }

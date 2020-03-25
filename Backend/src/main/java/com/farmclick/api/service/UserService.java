@@ -8,4 +8,5 @@ import org.springframework.stereotype.Service;
 public interface UserService {
 
     User getUser(Long id);
+    User getUserByLogin(String login);
 }
