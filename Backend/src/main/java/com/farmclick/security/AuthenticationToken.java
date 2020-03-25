@@ -2,21 +2,17 @@ package com.farmclick.security;
 
 import com.farmclick.api.model.User;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 
 public class AuthenticationToken extends AbstractAuthenticationToken {
 
-    private User authenticatedUser;
-    @Getter
-    private Long id;
+//    private User authenticatedUser;
+    private String login;
 
-    public AuthenticationToken(Long id) {
-        super(null);
-        this.id = id;
-    }
-
-    public void setAuthenticatedUser(User user){
-        authenticatedUser = user;
+    public AuthenticationToken(String login, UserAuthorities authorities) {
+        super(authorities.getAuthorities());
+        this.login = login;
     }
 
     @Override
@@ -26,6 +22,6 @@ public class AuthenticationToken extends AbstractAuthenticationToken {
 
     @Override
     public Object getPrincipal() {
-        return authenticatedUser;
+        return login;
     }
 }
