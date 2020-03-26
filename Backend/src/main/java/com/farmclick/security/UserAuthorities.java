@@ -9,13 +9,8 @@ import java.util.Collection;
 
 public enum UserAuthorities {
 
-    USER(new SimpleGrantedAuthority[]{
-            new SimpleGrantedAuthority("ROLE_USER")
-    }),
-    ADMIN(new SimpleGrantedAuthority[]{
-            new SimpleGrantedAuthority("ROLE_USER"),
-            new SimpleGrantedAuthority("ROLE_ADMIN")
-    });
+    USER(new SimpleGrantedAuthority("ROLE_USER")),
+    ADMIN(new SimpleGrantedAuthority("ROLE_USER"), new SimpleGrantedAuthority("ROLE_ADMIN"));
 
     @Getter
     private Collection<GrantedAuthority> authorities;

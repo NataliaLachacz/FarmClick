@@ -1,7 +1,7 @@
 package com.farmclick.exception.controller;
 
-import com.farmclick.exception.AuthenticationException;
 import com.farmclick.exception.ExceptionResponse;
+import com.farmclick.exception.LoginException;
 import com.farmclick.exception.PlantNotFoundException;
 import com.farmclick.exception.UserNotFoundException;
 import org.slf4j.Logger;
@@ -22,34 +22,38 @@ public class AdviceController {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ExceptionResponse> userNotFound(final UserNotFoundException exception) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
         String errorMessage = exception.toString();
-        ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.NOT_FOUND.value(), errorMessage);
+        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
         this.logError(exception);
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exceptionResponse, status);
     }
 
     @ExceptionHandler(PlantNotFoundException.class)
     public ResponseEntity<ExceptionResponse> plantNotFound(final PlantNotFoundException exception) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
         String errorMessage = exception.toString();
-        ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.NOT_FOUND.value(), errorMessage);
+        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
         this.logError(exception);
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exceptionResponse, status);
     }
 
     @ExceptionHandler(SecurityException.class)
     public ResponseEntity<ExceptionResponse> securityException(final SecurityException exception) {
+        HttpStatus status = HttpStatus.FORBIDDEN;
         String errorMessage = exception.toString();
-        ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.FORBIDDEN.value(), errorMessage);
+        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
         this.logError(exception);
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exceptionResponse, status);
     }
 
-    @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<ExceptionResponse> authenticationException(final AuthenticationException exception) {
-        String errorMessage = exception.toString();
-        ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.BAD_REQUEST.value(), errorMessage);
-        this.logError(exception);
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    @ExceptionHandler(LoginException.class)
+    public ResponseEntity<ExceptionResponse> loginException(final LoginException exception) {
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+        String errorMessage = "Invalid credentials.";//exception.toString();
+        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
+//        this.logError(exception);
+        return new ResponseEntity<>(exceptionResponse, status);
     }
 
 }

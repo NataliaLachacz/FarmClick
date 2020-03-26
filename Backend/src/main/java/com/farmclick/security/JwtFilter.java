@@ -30,7 +30,8 @@ public class JwtFilter extends BasicAuthenticationFilter {
     private AuthenticationToken getAuthenticationToken(String token) throws AuthenticationException {
         DecodedJWT decodedJWT = JWTUtil.decodeJWT(token);
         String userLogin = decodedJWT.getClaim("sub").asString();
-        return new AuthenticationToken(userLogin, UserAuthorities.USER);
+        Long userId = decodedJWT.getClaim("id").asLong();
+        return new AuthenticationToken(userLogin, userId, UserAuthorities.USER);
     }
 
     @Override
