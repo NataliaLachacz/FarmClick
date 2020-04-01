@@ -37,5 +37,8 @@ public class User {
     private Long clicks = 0L;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    Set<Plant> unlockedPlants = new HashSet<>();
+    private Set<Plant> unlockedPlants = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Role role;
 }

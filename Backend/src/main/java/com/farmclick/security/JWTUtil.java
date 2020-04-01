@@ -16,23 +16,25 @@ import java.util.Date;
 public class JWTUtil {
 
     private static byte[] password;
+    private static Long expirationTime;
 
-    public static String createToken(User user, Long expirationTimeInSeconds) {
+    public static String createToken(User user) {
         long millis = System.currentTimeMillis();
 
         return JWT.create()
                 .withSubject(user.getLogin())
-                .withIssuer("ISSUER_TEST")
-                .withClaim("roles", "ROLE_USER") //TODO roles
+                .withIssuer("APP")
+                .withClaim("id", user.getId())
+                .withClaim("roles", user.getRole().getName())
                 .withIssuedAt(new Date(millis))
-                .withExpiresAt(new Date(millis + (expirationTimeInSeconds * 1000)))
+                .withExpiresAt(new Date(millis + (expirationTime * 1000)))
                 .sign(Algorithm.HMAC512(password));
     }
 
     public static DecodedJWT decodeJWT(String token) {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC512(password))
-                    .withIssuer("ISSUER_TEST")
+                    .withIssuer("APP")
                     .build();
             return verifier.verify(token);
         } catch (SignatureVerificationException ex){
@@ -43,5 +45,10 @@ public class JWTUtil {
     @Value("${security.password}")
     public void setPassword(String pass) {
         password = pass.getBytes();
+    }
+
+    @Value("${security.expiration.time}")
+    public void setExpirationTime(Long expTime){
+        expirationTime = expTime;
     }
 }

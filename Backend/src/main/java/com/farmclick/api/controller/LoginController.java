@@ -24,7 +24,7 @@ public class LoginController {
     public void login(@RequestBody LoginCredentialsDTO credentials, HttpServletResponse response){
         User authenticatedUser = loginService.loginUser(credentials.getLogin(), credentials.getPassword());
 
-        String token = JWTUtil.createToken(authenticatedUser, 300L);
+        String token = JWTUtil.createToken(authenticatedUser);
         response.setHeader("Authentication", token);
     }
 }
