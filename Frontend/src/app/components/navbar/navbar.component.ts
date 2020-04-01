@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
-import { CounterService } from 'src/app/services/counter.service';
+import { UserService } from '../../services/user.service';
+import { UserStats } from '../../models/userStats.model';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,17 @@ import { CounterService } from 'src/app/services/counter.service';
 })
 export class NavbarComponent implements OnInit {
   faShoppingBasket = faShoppingBasket;
+  userStats: UserStats[];
 
-  constructor(private counterService: CounterService) {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getUserStats();
+  }
+
+  getUserStats() {
+    this.userService
+      .getUserStats()
+      .subscribe(userStats => (this.userStats = userStats));
+  }
 }
