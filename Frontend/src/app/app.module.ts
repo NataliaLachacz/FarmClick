@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './components/app/app-routing.module';
@@ -12,7 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { GameComponent } from './components/game/game.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CounterService } from './services/counter.service';
+import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,9 +38,10 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [CounterService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,0 +1,41 @@
+plant {
+    nazwa
+    wartosc ( cena )
+    koszt ( odblokowania )
+} R
+
+userStats {
+    klikniecia
+    pieniazki
+} R
+
+userStatsUpdate {
+    klikniecia
+} U
+
+user {
+    login
+    email
+    plants
+} R
+
+rejestration {
+    login
+    email
+    password
+    repeat password
+} C
+
+login {
+    login
+    haslo
+} 
+
+probaOdblokowaniaPlanta {
+    plant.nazwa
+} C
+
+kod błędu {
+    code
+    description
+} R
