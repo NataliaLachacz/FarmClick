@@ -2,8 +2,6 @@ package com.farmclick.exception.controller;
 
 import com.farmclick.exception.ExceptionResponse;
 import com.farmclick.exception.LoginException;
-import com.farmclick.exception.PlantNotFoundException;
-import com.farmclick.exception.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -20,23 +18,15 @@ public class AdviceController {
         logger.error(e.getMessage(), e);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ExceptionResponse> userNotFound(final UserNotFoundException exception) {
-        HttpStatus status = HttpStatus.NOT_FOUND;
-        String errorMessage = exception.toString();
-        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
-        this.logError(exception);
-        return new ResponseEntity<>(exceptionResponse, status);
-    }
+//    @ExceptionHandler(UserNotFoundException.class)
+//    public ResponseEntity<ExceptionResponse> userNotFound(final UserNotFoundException exception) {
+//        HttpStatus status = HttpStatus.NOT_FOUND;
+//        String errorMessage = exception.toString();
+//        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
+//        this.logError(exception);
+//        return new ResponseEntity<>(exceptionResponse, status);
+//    }
 
-    @ExceptionHandler(PlantNotFoundException.class)
-    public ResponseEntity<ExceptionResponse> plantNotFound(final PlantNotFoundException exception) {
-        HttpStatus status = HttpStatus.NOT_FOUND;
-        String errorMessage = exception.toString();
-        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
-        this.logError(exception);
-        return new ResponseEntity<>(exceptionResponse, status);
-    }
 
     @ExceptionHandler(SecurityException.class)
     public ResponseEntity<ExceptionResponse> securityException(final SecurityException exception) {

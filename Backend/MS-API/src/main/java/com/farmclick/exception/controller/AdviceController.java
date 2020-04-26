@@ -1,7 +1,6 @@
 package com.farmclick.exception.controller;
 
 import com.farmclick.exception.ExceptionResponse;
-import com.farmclick.exception.LoginException;
 import com.farmclick.exception.PlantNotFoundException;
 import com.farmclick.exception.UserNotFoundException;
 import org.slf4j.Logger;
@@ -44,15 +43,6 @@ public class AdviceController {
         String errorMessage = exception.toString();
         ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
         this.logError(exception);
-        return new ResponseEntity<>(exceptionResponse, status);
-    }
-
-    @ExceptionHandler(LoginException.class)
-    public ResponseEntity<ExceptionResponse> loginException(final LoginException exception) {
-        HttpStatus status = HttpStatus.UNAUTHORIZED;
-        String errorMessage = "Invalid credentials.";//exception.toString();
-        ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
-//        this.logError(exception);
         return new ResponseEntity<>(exceptionResponse, status);
     }
 
