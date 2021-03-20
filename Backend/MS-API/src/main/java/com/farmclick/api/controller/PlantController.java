@@ -1,11 +1,9 @@
 package com.farmclick.api.controller;
 
 import com.farmclick.api.dto.PlantDTO;
-import com.farmclick.api.model.Plant;
 import com.farmclick.api.service.PlantService;
 import com.farmclick.api.transformer.PlantTransformer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/plant")
+@RequestMapping("/plant")
 @RequiredArgsConstructor
 public class PlantController {
 

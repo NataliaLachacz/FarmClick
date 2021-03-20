@@ -12,7 +12,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
     private final UserRepository userRepository;
 
     @Override
@@ -38,8 +37,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean removeUserById(Long id) {
-        userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id [" + id + "] not found."));
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User with id [" + id + "] not found."));
+        userRepository.delete(user);
         return true;
     }
 

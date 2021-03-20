@@ -17,7 +17,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/user/*").hasRole(UserAuthorities.USER.name())
                 .antMatchers(HttpMethod.DELETE, "/api/user/*").hasRole(UserAuthorities.ADMIN.name())
                 .antMatchers("/api/plant/*").hasRole(UserAuthorities.ADMIN.name())
-                .antMatchers("/api/login/*").permitAll()
                 .and()
                 .addFilter(new JwtFilter(authenticationManager()))
                 .csrf().disable();

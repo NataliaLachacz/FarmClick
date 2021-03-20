@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Data
 public class UserDTO {
-
     private String login;
     private String email;
     private BigDecimal coins;

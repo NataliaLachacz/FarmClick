@@ -32,12 +32,12 @@ public class InitMockDB {
         Plant dynia = initPlant("Dynia", "dynia", new BigDecimal(50), new BigDecimal(1500));
         insertPlants(zboze, marchew, dynia);
 
-        Role role = initUserRole();
-        insertRole(role);
+        Role user = initUserRole();
+        Role admin = initAdminRole();
 
         String salt = BCrypt.gensalt();
-        User worms = initUser("Worms308", BCrypt.hashpw("hasłoWormsa", salt), "worms308@wp.pl", new BigDecimal(1234), 999L, dynia, role);
-        User dream = initUser("DreamTeamHeroin", BCrypt.hashpw("hasłoHeroiny", salt), "amy1@o2.pl", new BigDecimal(978), 54397L, zboze, role);
+        User worms = initUser("Worms308", BCrypt.hashpw("hasłoWormsa", salt), "worms308@wp.pl", new BigDecimal(1234), 999L, dynia, user);
+        User dream = initUser("DreamTeamHeroin", BCrypt.hashpw("hasłoHeroiny", salt), "amy1@o2.pl", new BigDecimal(978), 54397L, zboze, admin);
         insertUsers(worms, dream);
     }
 
@@ -87,10 +87,14 @@ public class InitMockDB {
         role.setName("ROLE_USER");
         role.setAuthority(UserAuthorities.USER);
 
-        return role;
+        return roleRepository.save(role);
     }
 
-    private void insertRole(Role role){
-        roleRepository.save(role);
+    private Role initAdminRole() {
+        Role role = new Role();
+        role.setName("ROLE_ADMIN");
+        role.setAuthority(UserAuthorities.ADMIN);
+
+        return roleRepository.save(role);
     }
 }

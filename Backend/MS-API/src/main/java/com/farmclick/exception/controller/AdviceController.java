@@ -3,20 +3,18 @@ package com.farmclick.exception.controller;
 import com.farmclick.exception.ExceptionResponse;
 import com.farmclick.exception.PlantNotFoundException;
 import com.farmclick.exception.UserNotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+@Log4j2
 @ControllerAdvice
 public class AdviceController {
 
-    private final static Logger logger = LoggerFactory.getLogger(AdviceController.class);
-
     private void logError(Exception e) {
-        logger.error(e.getMessage(), e);
+        log.error(e.getMessage(), e);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
