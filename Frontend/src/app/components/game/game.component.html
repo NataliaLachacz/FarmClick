@@ -6,7 +6,7 @@
     </div>
     <div class="plant" (click)="onAddClick()">
       <div class="plant__crop">
-        <img src="../../assets/image/wheat.png" alt="crop-img" />
+        <img [src]="'assets/image/' + plants[0].name + '.png'" alt="crop-img" />
       </div>
       <div class="plant__field">
         <img src="../../assets/image/field.png" alt="field-img" />
