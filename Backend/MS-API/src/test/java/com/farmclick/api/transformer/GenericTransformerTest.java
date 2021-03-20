@@ -13,9 +13,8 @@ class GenericTransformerTest {
     @Test
     void shouldCreateUserFromDTOWithGeneric() {
         User user = new User();
-        user.setLogin("Test");
         user.setClicks(250L);
-        user.setCoins(new BigDecimal(15.0));
+        user.setCoins(new BigDecimal("15.0"));
 
         UserStatsDTO userStatsDTO = new GenericTransformer<User, UserStatsDTO>().createDTO(user, UserStatsDTO.class);
         User userFromDTO = new GenericTransformer<User, UserStatsDTO>().createEntity(userStatsDTO, User.class);
@@ -26,9 +25,8 @@ class GenericTransformerTest {
     @Test
     void shouldCreateUserFromDTOWithDedicated() {
         User user = new User();
-        user.setLogin("Test");
         user.setClicks(250L);
-        user.setCoins(new BigDecimal(15.0));
+        user.setCoins(new BigDecimal("15.0"));
 
         UserStatsDTO userStatsDTO = new UserStatsTransformer().createDTO(user, UserStatsDTO.class);
         User userFromDTO = new UserStatsTransformer().createEntity(userStatsDTO, User.class);

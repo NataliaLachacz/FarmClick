@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +26,6 @@ public class User {
     private String password;
 
     @Column(name = "user_email", nullable = false)
-    @Email
     private String email;
 
     @Column(name = "user_coins")
@@ -40,5 +38,6 @@ public class User {
     private Set<Plant> unlockedPlants = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
     private Role role;
 }

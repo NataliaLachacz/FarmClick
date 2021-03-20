@@ -1,4 +1,4 @@
-package com.farmclick.api.model;
+package com.farmclick.api.model.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -6,8 +6,6 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Entity
@@ -36,9 +34,7 @@ public class User {
     @Column(name = "user_clicks")
     private Long clicks = 0L;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Plant> unlockedPlants = new HashSet<>();
-
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
     private Role role;
 }

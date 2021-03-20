@@ -16,8 +16,9 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
+        <spring-boot.version>2.4.4</spring-boot.version>
         <h2.version>1.4.200</h2.version>
+        <spring-boot-security>5.4.5</spring-boot-security>
 
         <jwt.version>3.10.1</jwt.version>
         <lombok.version>1.18.12</lombok.version>
@@ -45,6 +46,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>${spring-boot-security}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

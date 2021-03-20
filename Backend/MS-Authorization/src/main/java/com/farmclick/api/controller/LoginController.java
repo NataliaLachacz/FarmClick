@@ -1,30 +1,28 @@
 package com.farmclick.api.controller;
 
-import com.auth0.jwt.JWT;
-import com.farmclick.api.dto.LoginCredentialsDTO;
-import com.farmclick.api.model.User;
+import com.farmclick.api.model.dto.AuthenticationToken;
+import com.farmclick.api.model.dto.LoginCredentials;
 import com.farmclick.api.service.LoginService;
-import com.farmclick.security.JWTUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/auth/login")
+@RequestMapping("/login")
 @AllArgsConstructor
+@Validated
 public class LoginController {
 
     private final LoginService loginService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void login(@RequestBody LoginCredentialsDTO credentials, HttpServletResponse response){
-        User authenticatedUser = loginService.loginUser(credentials.getLogin(), credentials.getPassword());
-
-        String token = JWTUtil.createToken(authenticatedUser);
-        response.setHeader("Authentication", token);
+    public void login(@Validated @RequestBody LoginCredentials credentials, HttpServletResponse response) {
+        AuthenticationToken token = loginService.authenticateUser(credentials);
+        response.setHeader(HttpHeaders.AUTHORIZATION, token.getValue());
     }
 }

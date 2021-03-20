@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-
     private final UserService userService;
 
     @GetMapping("/stats")
@@ -28,7 +27,7 @@ public class UserController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO getUser(){
+    public UserDTO getUser() {
         Long authenticatedId = (Long) SecurityContextHolder.getContext().getAuthentication().getCredentials();
         User user = userService.getUserById(authenticatedId);
         return new UserTransformer().createDTO(user, UserDTO.class);
@@ -39,10 +38,4 @@ public class UserController {
     public void removeUserById(@PathVariable Long id){
         userService.removeUserById(id);
     }
-
-//    @DeleteMapping
-//    @ResponseStatus(HttpStatus.OK)
-//    public void removeUser(User user){
-//        userService.removeUser(user);
-//    }
 }

@@ -7,6 +7,7 @@ import com.farmclick.api.model.User;
 import java.util.stream.Collectors;
 
 public class UserTransformer extends GenericTransformer<User, UserDTO> {
+
     @Override
     public UserDTO createDTO(User user, Class<UserDTO> userDTOClass) {
         UserDTO dto = super.createDTO(user, userDTOClass);

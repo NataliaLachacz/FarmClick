@@ -5,10 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -25,8 +21,6 @@ public class Role {
     private String name;
 
     @Column(name = "role_authority", nullable = false)
+    @Enumerated(EnumType.STRING)
     private UserAuthorities authority;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    private Set<User> users = new HashSet<>();
 }

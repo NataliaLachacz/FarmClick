@@ -8,7 +8,9 @@ import com.farmclick.api.repository.RoleRepository;
 import com.farmclick.api.repository.UserRepository;
 import com.farmclick.security.UserAuthorities;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
@@ -23,6 +25,7 @@ public class InitMockDB {
     private final RoleRepository roleRepository;
 
     @PostConstruct
+    @Transactional
     public void initialize() {
         Plant zboze = initPlant("Zboże", "zboze", new BigDecimal(10), new BigDecimal(0));
         Plant marchew = initPlant("Marchew", "marchew", new BigDecimal(30), new BigDecimal(500));
@@ -32,8 +35,9 @@ public class InitMockDB {
         Role role = initUserRole();
         insertRole(role);
 
-        User worms = initUser("Worms308", "hasłoWormsa", "worms308@wp.pl", new BigDecimal(1234), 999L, dynia, role);
-        User dream = initUser("DreamTeamHeroin", "hasłoHeroiny", "amy1@o2.pl", new BigDecimal(978), 54397L, zboze, role);
+        String salt = BCrypt.gensalt();
+        User worms = initUser("Worms308", BCrypt.hashpw("hasłoWormsa", salt), "worms308@wp.pl", new BigDecimal(1234), 999L, dynia, role);
+        User dream = initUser("DreamTeamHeroin", BCrypt.hashpw("hasłoHeroiny", salt), "amy1@o2.pl", new BigDecimal(978), 54397L, zboze, role);
         insertUsers(worms, dream);
     }
 
@@ -87,7 +91,6 @@ public class InitMockDB {
     }
 
     private void insertRole(Role role){
-        if (roleRepository.findAll().stream().noneMatch(item -> role.getName().equals(item.getName())))
-            roleRepository.save(role);
+        roleRepository.save(role);
     }
 }

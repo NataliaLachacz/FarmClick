@@ -1,11 +1,11 @@
-package com.farmclick.api.transformer;
+package com.farmclick.api.model.dto.transformer;
 
 import org.springframework.beans.BeanUtils;
 
-public class GenericTransformer <ENTITY, DTO> {
+public class GenericTransformer <E, D> {
 
-    public ENTITY createEntity(DTO dto, Class<ENTITY> entityClass) {
-        ENTITY entity = null;
+    public E createEntity(D dto, Class<E> entityClass) {
+        E entity = null;
         try {
             entity = entityClass.newInstance();
             BeanUtils.copyProperties(dto, entity);
@@ -16,8 +16,8 @@ public class GenericTransformer <ENTITY, DTO> {
         return entity;
     }
 
-    public DTO createDTO(ENTITY entity, Class<DTO> dtoClass)  {
-        DTO dto = null;
+    public D createDTO(E entity, Class<D> dtoClass)  {
+        D dto = null;
         try {
             dto = dtoClass.newInstance();
             BeanUtils.copyProperties(entity, dto);
