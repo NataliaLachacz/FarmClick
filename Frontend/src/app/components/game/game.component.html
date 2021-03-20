@@ -1,12 +1,12 @@
-<app-navbar></app-navbar>
+<app-navbar [coins]="coins"></app-navbar>
 <div class="game">
   <div class="object">
     <div class="object__name">
       <h2>Wheat</h2>
     </div>
-    <div class="plant" (click)="counterService.addClick()">
+    <div class="plant" (click)="onAddClick()">
       <div class="plant__crop">
-        <img src="../../assets/image/wheat.png" alt="crop-img" />
+        <img [src]="'assets/image/' + plants[0].name + '.png'" alt="crop-img" />
       </div>
       <div class="plant__field">
         <img src="../../assets/image/field.png" alt="field-img" />
@@ -18,4 +18,4 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+<app-footer [clicks]="clicks"></app-footer>

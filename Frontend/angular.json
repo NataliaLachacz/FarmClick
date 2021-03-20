@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FarmClick"
+    }
+  },
+  "defaultProject": "FarmClick",
+  "cli": {
+    "analytics": "42d8ae34-3e12-42ad-8702-6364491a90d1"
+  }
 }
