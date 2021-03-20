@@ -1,26 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { UserService } from '../../services/user.service';
-import { UserStats } from '../../models/userStats.model';
+
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
   faCog = faCog;
-  userStats: UserStats[];
+  @Input() clicks: number;
 
-  constructor(private userService: UserService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.getUserStats();
-  }
-
-  getUserStats() {
-    this.userService
-      .getUserStats()
-      .subscribe(userStats => (this.userStats = userStats));
-  }
 }
