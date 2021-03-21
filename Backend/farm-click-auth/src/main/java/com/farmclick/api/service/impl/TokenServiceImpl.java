@@ -24,7 +24,7 @@ public class TokenServiceImpl implements TokenService {
     public String createToken(User user) {
         long millis = System.currentTimeMillis();
 
-        return "Bearer " + JWT.create()
+        return JWT.create()
                 .withSubject(user.getLogin())
                 .withIssuer("APP")
                 .withClaim("id", user.getId())

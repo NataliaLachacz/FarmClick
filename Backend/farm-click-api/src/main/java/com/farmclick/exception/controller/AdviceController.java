@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AdviceController {
 
-    private void logError(Exception e) {
-        log.error(e.getMessage(), e);
+    private void logWarn(Exception e) {
+        log.warn(e.getMessage());
     }
 
     @ExceptionHandler(UserNotFoundException.class)
@@ -22,7 +22,7 @@ public class AdviceController {
         HttpStatus status = HttpStatus.NOT_FOUND;
         String errorMessage = exception.toString();
         ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
-        this.logError(exception);
+        this.logWarn(exception);
         return new ResponseEntity<>(exceptionResponse, status);
     }
 
@@ -31,7 +31,7 @@ public class AdviceController {
         HttpStatus status = HttpStatus.NOT_FOUND;
         String errorMessage = exception.toString();
         ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
-        this.logError(exception);
+        this.logWarn(exception);
         return new ResponseEntity<>(exceptionResponse, status);
     }
 
@@ -40,7 +40,7 @@ public class AdviceController {
         HttpStatus status = HttpStatus.FORBIDDEN;
         String errorMessage = exception.toString();
         ExceptionResponse exceptionResponse = new ExceptionResponse(status.value(), errorMessage);
-        this.logError(exception);
+        this.logWarn(exception);
         return new ResponseEntity<>(exceptionResponse, status);
     }
 

@@ -13,10 +13,20 @@ public enum UserAuthorities {
     ADMIN(new SimpleGrantedAuthority("ROLE_USER"), new SimpleGrantedAuthority("ROLE_ADMIN"));
 
     @Getter
-    private Collection<GrantedAuthority> authorities;
+    private final Collection<GrantedAuthority> authorities;
 
     UserAuthorities(GrantedAuthority... authorities) {
         this.authorities = Arrays.asList(authorities);
     }
 
+    public static UserAuthorities getByName(String name) {
+        return Arrays.stream(UserAuthorities.values())
+                .filter(value -> value.name().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public String getAuthorityName(){
+        return "ROLE_" + this.name().toUpperCase();
+    }
 }

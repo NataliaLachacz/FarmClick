@@ -1,14 +1,14 @@
 package com.farmclick.security;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 
+@Getter
+@EqualsAndHashCode(callSuper = true)
 public class AuthenticationToken extends AbstractAuthenticationToken {
-
-    @Getter
-    private Long id;
-    @Getter
-    private String login;
+    private final Long id;
+    private final String login;
 
     public AuthenticationToken(String login, Long id, UserAuthorities authorities) {
         super(authorities.getAuthorities());
