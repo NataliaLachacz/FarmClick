@@ -1,12 +1,6 @@
 HELP.md
-target/
-!**/src/main/**
-!**/src/test/**
+logs
 
 ### IntelliJ IDEA ###
 .idea
 *.iml
-
-### my ###
-*.mvn
-logs
