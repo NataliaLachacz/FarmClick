@@ -1,8 +1,10 @@
 package com.farmclick.api.service.impl;
 
+import com.farmclick.api.dto.UserDTO;
 import com.farmclick.api.model.User;
 import com.farmclick.api.repository.UserRepository;
 import com.farmclick.api.service.UserService;
+import com.farmclick.api.mapper.custom.UserMapper;
 import com.farmclick.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,18 +17,23 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id [" + id + "] not found."));
+    public UserDTO getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User with id [" + id + "] not found."))
+                .transform(new UserMapper());
     }
 
     @Override
-    public User getUserByLogin(String login) {
-        return userRepository.findByLogin(login).orElseThrow(() -> new UserNotFoundException("User with login [" + login + "] not found."));
+    public UserDTO getUserByLogin(String login) {
+        return userRepository.findByLogin(login)
+                .orElseThrow(() -> new UserNotFoundException("User with login [" + login + "] not found."))
+                .transform(UserDTO.class);
     }
 
     @Override
-    public User addUser(User user) {
-        return userRepository.save(user);
+    public UserDTO addUser(User user) {
+        return userRepository.save(user)
+                .transform(UserDTO.class);
     }
 
     @Override
@@ -44,11 +51,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(User user) {
+    public UserDTO updateUser(User user) {
         Optional<User> fromDb = userRepository.findByLogin(user.getLogin());
         if (fromDb.isPresent()){
             user.setId(fromDb.get().getId());
-            return userRepository.save(user);
+            return userRepository.save(user)
+                    .transform(UserDTO.class);
         } else {
             throw new UserNotFoundException("User with login [" + user.getLogin() + "] not found.");
         }

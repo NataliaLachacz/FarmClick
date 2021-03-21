@@ -1,5 +1,6 @@
 package com.farmclick.api.model;
 
+import com.farmclick.api.mapper.MappingTarget;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Plants")
 @EqualsAndHashCode
-public class Plant {
+public class Plant implements MappingTarget<Plant> {
 
     @Id
     @Column(name = "plant_id", nullable = false, unique = true)
