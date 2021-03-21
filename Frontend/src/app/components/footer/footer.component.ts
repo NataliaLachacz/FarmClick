@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { Counter } from './../../store/models/counter.model';
-import { AppState } from './../../store/app.state';
+
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnDestroy{
   faCog = faCog;
-  counter: Observable<Counter[]>;
 
-  constructor(private store: Store<AppState>) {
-    this.counter = store.select('counter');
+  clicks: number;
+  subscription: Subscription;
+
+  constructor(private sharedService: SharedService) {
+    this.subscription = this.sharedService.clicks$.subscribe((clicks: number): void => {
+      this.clicks = clicks;
+    });
   }
 
-  ngOnInit() {}
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

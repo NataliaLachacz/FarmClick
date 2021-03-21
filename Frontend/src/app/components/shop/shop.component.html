@@ -1,0 +1,21 @@
+<div class="shop">
+  <div class="object">
+    <div class="object__arrow">
+      <fa-icon [icon]="faArrowLeft" routerLink='/home/game'></fa-icon>
+    </div>
+    <div class="object__name">
+      <h2>Buy more</h2>
+    </div>
+    <ul class="object__plants-list">
+      <li *ngFor="let plant of plants">
+        <img class="plant" [src]="'assets/image/' + plant.name + '.png'" alt="crop-img">
+        <p class="plant-name">{{plant.name}}</p>
+        <p *ngIf="plant.isToUnlock" class="coins-to-unlock">
+          <img class="coin" src="assets/image/coin.png" alt="coin-img">
+          {{plant.toUnlock}}
+        </p>
+        <fa-icon *ngIf="!plant.isToUnlock" [icon]="faCheck" class="check-icon"></fa-icon>
+      </li>
+    </ul>
+  </div>
+</div>

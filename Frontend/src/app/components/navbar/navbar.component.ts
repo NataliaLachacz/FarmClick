@@ -1,15 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { SharedService } from 'src/app/services/shared.service';
+import { Component } from '@angular/core';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "app-navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.scss"]
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   faShoppingBasket = faShoppingBasket;
 
-  constructor() {}
+  coins: number;
+  subscription: Subscription;
 
-  ngOnInit() {}
+  constructor(private sharedService: SharedService) {
+    this.subscription = this.sharedService.coins$.subscribe((coins: number): void => {
+      this.coins = coins;
+    })
+  }
 }
