@@ -16,8 +16,8 @@
 	<packaging>pom</packaging>
 
     <modules>
-        <module>MS-API</module>
-        <module>MS-Authorization</module>
+        <module>farm-click-api</module>
+        <module>farm-click-auth</module>
     </modules>
 
     <properties>
