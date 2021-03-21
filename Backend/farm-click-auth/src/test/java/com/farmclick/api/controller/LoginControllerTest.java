@@ -66,7 +66,7 @@ class LoginControllerTest extends TestBase {
         User user = new User();
         user.setLogin(login);
         user.setPassword(password);
-        user.setEmail("email");
+        user.setEmail("email@gmail.com");
         user.setCoins(new BigDecimal("1"));
         user.setClicks(1L);
         user.setRole(role);
