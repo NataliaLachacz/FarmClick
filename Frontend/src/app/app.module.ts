@@ -14,6 +14,7 @@ import { ShopComponent } from './components/shop/shop.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from './services/user.service';
+import { StartComponent } from './components/start/start.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserService } from './services/user.service';
     NavbarComponent,
     FooterComponent,
     GameComponent,
-    ShopComponent
+    ShopComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,

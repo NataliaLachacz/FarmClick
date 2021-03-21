@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
+import { Component } from '@angular/core';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,12 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent {
   faShoppingBasket = faShoppingBasket;
 
-  @Input() coins: number;
+  coins: number;
+  subscription: Subscription;
 
-  constructor() {}
+  constructor(private sharedService: SharedService) {
+    this.subscription = this.sharedService.coins$.subscribe((coins: number): void => {
+      this.coins = coins;
+    })
+  }
 }

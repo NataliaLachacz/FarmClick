@@ -1,12 +1,13 @@
-import { Plant } from './../../models/plant.model';
 import { Component } from '@angular/core';
 
+import { Plant } from './../../models/plant.model';
 import { plants } from 'src/app/models/plants';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
 })
 export class GameComponent {
   clicks: number;
@@ -14,7 +15,7 @@ export class GameComponent {
   plantValue: number;
   plants: Plant[];
 
-  constructor() {
+  constructor(private sharedService: SharedService) {
     this.clicks = 0;
     this.coins = 0;
     this.plants = plants;
@@ -22,14 +23,17 @@ export class GameComponent {
   }
 
   onAddClick(): void {
+    let plantElement: HTMLElement = document.querySelector('.plant__crop');
+
     this.clicks++;
     let modulo: number = this.clicks % 3;
-    let plantElement: HTMLElement = document.querySelector('.plant__crop');
+    this.sharedService.addClick(this.clicks);
 
     switch (modulo) {
       case 0: {
         plantElement.style.display = 'none';
         this.coins += this.plantValue;
+        this.sharedService.addCoins(this.coins);
         break;
       }
       case 1: {
