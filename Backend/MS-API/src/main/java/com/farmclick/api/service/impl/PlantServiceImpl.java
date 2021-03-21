@@ -20,7 +20,7 @@ public class PlantServiceImpl implements PlantService {
     public List<PlantDTO> getAllPlants() {
         return plantRepository.findAll()
                 .stream()
-                .map(plant -> plant.transform(PlantDTO.class))
+                .map(plant -> plant.map(PlantDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -28,13 +28,13 @@ public class PlantServiceImpl implements PlantService {
     public PlantDTO getPlantById(Long id) {
         return plantRepository.findById(id)
                 .orElseThrow(() -> new PlantNotFoundException("Plant with id [" + id + "] not found."))
-                .transform(PlantDTO.class);
+                .map(PlantDTO.class);
     }
 
     @Override
     public PlantDTO getPlantByName(String name) {
         return plantRepository.findByNameIgnoreCase(name)
                 .orElseThrow(() -> new PlantNotFoundException("Plant with name [" + name + "] not found."))
-                .transform(PlantDTO.class);
+                .map(PlantDTO.class);
     }
 }

@@ -1,6 +1,6 @@
 package com.farmclick.api.model;
 
-import com.farmclick.api.mapper.MappingTarget;
+import com.farmclick.api.mapper.Mappable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Users")
 @EqualsAndHashCode
-public class User implements MappingTarget<User> {
+public class User implements Mappable {
 
     @Id
     @Column(name = "user_id", nullable = false, unique = true)

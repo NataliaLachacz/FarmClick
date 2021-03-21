@@ -20,20 +20,20 @@ public class UserServiceImpl implements UserService {
     public UserDTO getUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User with id [" + id + "] not found."))
-                .transform(new UserMapper());
+                .map(new UserMapper());
     }
 
     @Override
     public UserDTO getUserByLogin(String login) {
         return userRepository.findByLogin(login)
                 .orElseThrow(() -> new UserNotFoundException("User with login [" + login + "] not found."))
-                .transform(UserDTO.class);
+                .map(UserDTO.class);
     }
 
     @Override
     public UserDTO addUser(User user) {
         return userRepository.save(user)
-                .transform(UserDTO.class);
+                .map(UserDTO.class);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
         if (fromDb.isPresent()){
             user.setId(fromDb.get().getId());
             return userRepository.save(user)
-                    .transform(UserDTO.class);
+                    .map(UserDTO.class);
         } else {
             throw new UserNotFoundException("User with login [" + user.getLogin() + "] not found.");
         }

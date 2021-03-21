@@ -8,9 +8,9 @@ import org.springframework.beans.BeanUtils;
  * @param <O> Means output object class
  * @param <I> Means input object class
  */
-public interface CustomMapper<O extends MappingTarget<O>, I extends Mappable> {
+public interface CustomMapper<O extends Mappable, I extends Mappable> {
 
-    O transform(I entity);
+    O map(I entity);
 
     default O defaultMap(I entity, Class<O> entityClass) {
         O transformed = null;

@@ -19,7 +19,7 @@ public class UserController {
     public UserStatsDTO getUserStats() {
         Long authenticatedId = (Long) SecurityContextHolder.getContext().getAuthentication().getCredentials();
         return userService.getUserById(authenticatedId)
-                .transform(UserStatsDTO.class);
+                .map(UserStatsDTO.class);
     }
 
     @GetMapping

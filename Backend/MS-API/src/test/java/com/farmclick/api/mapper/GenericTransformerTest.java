@@ -16,8 +16,8 @@ class GenericTransformerTest {
         user.setClicks(250L);
         user.setCoins(new BigDecimal("15.0"));
 
-        UserStatsDTO userStatsDTO = user.transform(UserStatsDTO.class);
-        User userFromDTO = userStatsDTO.transform(User.class);
+        UserStatsDTO userStatsDTO = user.map(UserStatsDTO.class);
+        User userFromDTO = userStatsDTO.map(User.class);
 
         assertEquals(user, userFromDTO);
     }

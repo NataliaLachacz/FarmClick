@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 public class UserMapper implements CustomMapper<UserDTO, User> {
 
     @Override
-    public UserDTO transform(User entity) {
+    public UserDTO map(User entity) {
         UserDTO dto = CustomMapper.super.defaultMap(entity, UserDTO.class);
         dto.setUnlockedPlants(entity.getUnlockedPlants()
                 .stream()
-                .map(item -> item.transform(PlantDTO.class))
+                .map(item -> item.map(PlantDTO.class))
                 .collect(Collectors.toSet())
         );
         return dto;
