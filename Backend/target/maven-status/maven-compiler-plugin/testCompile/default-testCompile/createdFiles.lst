@@ -1,0 +1,3 @@
+com\farmclick\api\controller\UserControllerTest.class
+com\farmclick\FarmclickApplicationTests.class
+com\farmclick\api\transformer\GenericTransformerTest.class
