@@ -1,6 +1,6 @@
 $white: #fff;
 
-.shop {
+.settings {
   padding: 25px 0px;
 
   .object {
@@ -25,7 +25,7 @@ $white: #fff;
         margin-top: -15px;
       }
     }
-    &__plants-list {
+    &__settings-list {
       list-style: none;
       text-align: center;
       color: $white;
@@ -36,38 +36,28 @@ $white: #fff;
       li {
         width: 100%;
         display: flex;
-        padding: 13px 0px;
+        padding: 30px 0px;
         align-items: center;
         justify-content: center;
         gap: 30px;
         border-top: 1px solid #444444;
-        cursor: pointer;
 
         &:last-child {
           border-bottom: 1px solid #444444;
         }
 
+        a {
+          text-decoration: none;
+          color: $white;
+        }
+
         p {
           margin: 0;
-
-          &.coins-to-unlock {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-          }
         }
 
-        img.plant {
-          width: 40px;
-        }
-
-        img.coin {
-          width: 20px;
-        }
-
-        .check-icon {
-          color: #1aff11;
-          font-size: 25px;
+        img {
+          width: 80px;
+          cursor: pointer;
         }
       }
     }

@@ -5,6 +5,7 @@ import { GameComponent } from './components/game/game.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { StartComponent } from './components/start/start.component';
 
@@ -14,7 +15,7 @@ const homeRoutes: Routes = [{
     { path: '', redirectTo: 'game' , pathMatch: 'full'},
     { path: 'game', component: GameComponent },
     { path: 'shop', component: ShopComponent },
-    { path: 'settings', component: GameComponent }
+    { path: 'settings', component: SettingsComponent }
   ]
 }];
 

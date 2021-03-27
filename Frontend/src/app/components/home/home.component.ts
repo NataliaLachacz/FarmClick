@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -7,11 +7,7 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./home.component.scss'],
   providers: [SharedService]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }
