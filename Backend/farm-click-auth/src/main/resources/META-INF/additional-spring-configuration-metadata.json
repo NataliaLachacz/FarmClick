@@ -1,0 +1,11 @@
+{
+  "properties": [
+    {
+      "name": "security.password",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "security.expiration.time",
+      "type": "java.lang.String"
+    }
+  ] }
