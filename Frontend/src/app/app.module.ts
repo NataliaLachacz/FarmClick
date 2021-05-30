@@ -13,7 +13,7 @@ import { GameComponent } from './components/game/game.component';
 import { ShopComponent } from './components/shop/shop.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { UserService } from './services/user.service';
+import { UserService } from './_shared/services/user.service';
 import { StartComponent } from './components/start/start.component';
 import { SettingsComponent } from './components/settings/settings.component';
 

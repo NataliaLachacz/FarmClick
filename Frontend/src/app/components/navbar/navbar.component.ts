@@ -1,4 +1,4 @@
-import { SharedService } from 'src/app/services/shared.service';
+import { SharedService } from 'src/app/_shared/services/shared.service';
 import { Component } from '@angular/core';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';

@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 
-import { SharedService } from 'src/app/services/shared.service';
+import { SharedService } from 'src/app/_shared/services/shared.service';
 
 @Component({
   selector: 'app-footer',

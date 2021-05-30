@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { Plant } from './../../models/plant.model';
-import { plants } from 'src/app/models/plants';
-import { SharedService } from 'src/app/services/shared.service';
+import { Plant } from '../../_shared/models/plant.model';
+import { plants } from 'src/app/_shared/models/plants';
+import { SharedService } from 'src/app/_shared/services/shared.service';
 
 @Component({
   selector: 'app-game',
