@@ -4,4 +4,16 @@
   justify-content: center;
   align-content: center;
   row-gap: 5px;
+
+  .register-form {
+    display: grid;
+    gap: 5px;
+
+    &__error-message {
+      text-align: center;
+      color: #ffd949;
+      margin: 0;
+      margin-top: 5px;
+    }
+  }
 }
