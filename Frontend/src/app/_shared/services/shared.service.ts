@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedService {
   private _clicks = new BehaviorSubject<number>(0);
-  private _coins = new BehaviorSubject<number>(0);
+  private _coins = new BehaviorSubject<number>(100000);
 
   clicks$ = this._clicks.asObservable();
   coins$ = this._coins.asObservable();
