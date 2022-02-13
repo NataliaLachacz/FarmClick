@@ -8,21 +8,20 @@ import { SharedService } from 'src/app/_shared/services/shared.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnDestroy{
   faCog = faCog;
-
   clicks: number;
-  subscription: Subscription;
+  private _subscription: Subscription = new Subscription();
 
-  constructor(private sharedService: SharedService) {
-    this.subscription = this.sharedService.clicks$.subscribe((clicks: number): void => {
+  constructor(private readonly _sharedService: SharedService) {
+    this._subscription.add(this._sharedService.clicks$.subscribe((clicks: number): void => {
       this.clicks = clicks;
-    });
+    }));
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this._subscription.unsubscribe();
   }
 }

@@ -1,22 +1,25 @@
-import { SharedService } from 'src/app/_shared/services/shared.service';
-import { Component } from '@angular/core';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { SharedService } from 'src/app/_shared/services/shared.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnDestroy {
   faShoppingBasket = faShoppingBasket;
-
   coins: number;
-  subscription: Subscription;
+  private _subscription: Subscription = new Subscription();
 
-  constructor(private sharedService: SharedService) {
-    this.subscription = this.sharedService.coins$.subscribe((coins: number): void => {
+  constructor(private readonly _sharedService: SharedService) {
+    this._subscription.add(this._sharedService.coins$.subscribe((coins: number): void => {
       this.coins = coins;
-    })
+    }))
+  }
+
+  ngOnDestroy(): void{
+    this._subscription.unsubscribe();
   }
 }

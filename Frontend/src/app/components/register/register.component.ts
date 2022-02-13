@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-import { LoginService } from 'src/app/_shared/services/login.service';
+import { AuthService } from './../../_core/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +11,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errorMessage: string;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private readonly _authService: AuthService) { }
 
   ngOnInit(): void {
     this.initVariables();
@@ -33,11 +32,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmitRegisterForm(): void {
-    const email = this.registerForm.controls.email.value;
-    const password = this.registerForm.controls.password.value;
+    const email: string = this.registerForm.controls.email.value;
+    const password: string = this.registerForm.controls.password.value;
 
     if (password === this.registerForm.controls.repeatedPassword.value) {
-      this.loginService.tryRegisterUser(email, password);
+      this._authService.tryRegisterUser(email, password);
     } else {
       this.errorMessage = 'The repeated password is different';
     }

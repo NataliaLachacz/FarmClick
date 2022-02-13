@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from '../app/app-routing.module';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent } from './components/app/app.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -12,11 +12,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GameComponent } from './components/game/game.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { StartComponent } from './components/start/start.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from './_shared/services/user.service';
-import { StartComponent } from './components/start/start.component';
-import { SettingsComponent } from './components/settings/settings.component';
+import { AppRoutingModule } from '../app/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SettingsComponent } from './components/settings/settings.component';
     SettingsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

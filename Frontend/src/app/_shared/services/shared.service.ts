@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  private clicks = new Subject<number>();
-  private coins = new Subject<number>();
+  private _clicks = new BehaviorSubject<number>(0);
+  private _coins = new BehaviorSubject<number>(0);
 
-  clicks$ = this.clicks.asObservable();
-  coins$ = this.coins.asObservable();
-
-  constructor() { }
+  clicks$ = this._clicks.asObservable();
+  coins$ = this._coins.asObservable();
 
   addClick(click: number): void {
-    this.clicks.next(click);
+    this._clicks.next(click);
   }
 
   addCoins(coins: number): void {
-    this.coins.next(coins);
+    this._coins.next(coins);
   }
 }

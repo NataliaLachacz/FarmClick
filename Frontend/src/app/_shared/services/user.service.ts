@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { UserStats } from '../models/userStats.model';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserStats } from '../models/userStats.model';
+import { environment } from './../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'http://localhost:8080/api/user/stats';
-
-  constructor(private http: HttpClient) {}
+  constructor(private readonly _http: HttpClient) {}
 
   getUserStats(): Observable<UserStats[]> {
-    return this.http.get<UserStats[]>(this.url);
+    return this._http.get<UserStats[]>(environment.apiUrl);
   }
 }
