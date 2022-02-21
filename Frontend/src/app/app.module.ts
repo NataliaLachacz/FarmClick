@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 // import { StartComponent } from './start/start.component';
 // import { SettingsComponent } from './home/_pages/settings/settings.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import { UserService } from './_shared/services/user.service';
 
 @NgModule({
