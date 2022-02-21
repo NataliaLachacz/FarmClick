@@ -1,47 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { HttpClientModule } from '@angular/common/http';
+// import { CommonModule } from '@angular/common';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from '../app/app-routing.module';
+import { SharedModule } from './_shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { GameComponent } from './components/game/game.component';
-import { ShopComponent } from './components/shop/shop.component';
-import { StartComponent } from './components/start/start.component';
-import { SettingsComponent } from './components/settings/settings.component';
+// import { HomeComponent } from './home/home.component';
+// import { RegisterComponent } from './start/_pages/register/register.component';
+// import { LoginComponent } from './start/_pages/login/login.component';
+// import { NavbarComponent } from './home/_components/navbar/navbar.component';
+// import { FooterComponent } from './home/_components/footer/footer.component';
+// import { GameComponent } from './home/_pages/game/game.component';
+// import { ShopComponent } from './home/_pages/shop/shop.component';
+// import { StartComponent } from './start/start.component';
+// import { SettingsComponent } from './home/_pages/settings/settings.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { UserService } from './_shared/services/user.service';
-import { AppRoutingModule } from '../app/app-routing.module';
+// import { UserService } from './_shared/services/user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    RegisterComponent,
-    LoginComponent,
-    NavbarComponent,
-    FooterComponent,
-    GameComponent,
-    ShopComponent,
-    StartComponent,
-    SettingsComponent
+    // HomeComponent,
+    // RegisterComponent,
+    // LoginComponent,
+    // NavbarComponent,
+    // FooterComponent,
+    // GameComponent,
+    // ShopComponent,
+    // StartComponent,
+    // SettingsComponent
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FontAwesomeModule,
-    HttpClientModule
+    // CommonModule,
+    // HttpClientModule,
+    BrowserModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // FontAwesomeModule,
+    SharedModule
   ],
-  providers: [UserService],
+  // providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

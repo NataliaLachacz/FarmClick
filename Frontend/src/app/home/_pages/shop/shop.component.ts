@@ -1,7 +1,7 @@
-import { Plant } from '../../_shared/models/plant.model';
+import { Plant } from '../../../_shared/models/plant.interface';
 import { Component } from '@angular/core';
 import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
-import { plants } from 'src/app/_shared/models/plants';
+import { plants } from 'src/app/_shared/utils/plants';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/_shared/services/shared.service';
 

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 
-import { Plant } from "../../_shared/models/plant.model";
-import { plants } from "src/app/_shared/models/plants";
+import { Plant } from "../../../_shared/models/plant.interface";
+import { plants } from "src/app/_shared/utils/plants";
 
 import { SharedService } from "src/app/_shared/services/shared.service";
 import { Subscription } from "rxjs";
