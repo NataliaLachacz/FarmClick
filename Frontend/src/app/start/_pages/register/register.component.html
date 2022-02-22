@@ -1,11 +1,16 @@
 <div class="register__container">
-  <img src="assets/image/logo.png" alt="logo" />
-  <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterForm()">
-    <input formControlName="nickname" class="register-form__input input" type="text" placeholder="Nickname" />
-    <input formControlName="email" class="register-form__input input" type="email" placeholder="E-mail" />
-    <input formControlName="password" class="register-form__input input" type="password" placeholder="Password" />
-    <input formControlName="repeatedPassword" class="register-form__input input" type="password" placeholder="Repeat password" />
-    <p *ngIf="errorMessage" class="register-form__error-message">{{errorMessage}}</p>
-    <button class="register-form__button button--yellow" type="submit">Register</button>
-  </form>
+    <img src="assets/image/logo.png" alt="logo" />
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterForm()">
+        <input formControlName="nickname" class="register-form__input input" type="text" placeholder="Nickname" />
+        <input formControlName="email" class="register-form__input input" type="email" placeholder="E-mail" />
+        <input formControlName="password" class="register-form__input input" type="password" placeholder="Password" />
+        <input
+            formControlName="repeatedPassword"
+            class="register-form__input input"
+            type="password"
+            placeholder="Repeat password"
+        />
+        <p *ngIf="errorMessage" class="register-form__error-message">{{ errorMessage }}</p>
+        <button class="register-form__button button--yellow" type="submit">Register</button>
+    </form>
 </div>
