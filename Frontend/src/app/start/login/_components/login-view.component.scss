@@ -1,7 +1,22 @@
-.login__container {
+.login {
   height: 100%;
   display: grid;
   justify-content: center;
   align-content: center;
-  row-gap: 5px;
+
+  &__logo {
+    margin-bottom: 16px;
+  }
+  
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    row-gap: 8px;
+  }
+
+  &__button {
+    margin-top: 8px;
+  }
 }

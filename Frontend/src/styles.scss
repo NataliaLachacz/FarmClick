@@ -1,43 +1,56 @@
+@import './assets/styles/normalize.css';
+
 body {
-  margin: 0;
-  height: 100vh;
-  background-color: #afafaf;
-  display: grid;
-  justify-content: center;
-  align-items: center;
+    margin: 0;
+    height: 100vh;
+    background-color: #afafaf;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 
 body * {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .button--yellow {
-  margin: 15px auto 0 auto;
-  background-color: #ffd949;
-  border-radius: 50px;
-  border: none;
-  padding: 20px 0;
-  width: 70%;
-  justify-self: center;
-  color: #616161;
-  font-size: 18px;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 1s;
+    margin: 0 auto;
+    background-color: #ffd949;
+    border-radius: 50px;
+    border: none;
+    padding: 20px 0;
+    width: 100%;
+    justify-self: center;
+    color: #616161;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
 
-  &:hover {
-    background-color: #ffe071;
-  }
+    &:hover {
+        background-color: #ffdd60;
+    }
+}
+
+input {
+    all: unset;
 }
 
 .input {
-  background-color: #444444;
-  color: #afafaf;
-  border-radius: 14px;
-  border: none;
-  padding: 20px 30px;
-  font-size: 16px;
-  width: 75%;
-  margin: 0 auto;
+    all: unset;
+    background-color: #444444 !important;
+    color: #afafaf;
+    border-radius: 14px;
+    border: none;
+    padding: 20px 30px;
+    font-size: 16px !important;
+    width: 75%;
+    margin: 0 auto;
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s, font-size 600000s 0s;
 }

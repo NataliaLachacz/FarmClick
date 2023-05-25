@@ -8,12 +8,14 @@ import { LoginService } from './login.service';
     styleUrls: ['./login.component.scss'],
     standalone: true,
     imports: [LoginViewComponent],
-    providers: [LoginService]
+    providers: [LoginService],
 })
 export class LoginComponent {
     loginForm = this._loginService.initLoginForm();
 
     constructor(private readonly _loginService: LoginService) {}
 
-    tryToLogIn() {}
+    tryToLogInListener() {
+        console.log('login');
+    }
 }
