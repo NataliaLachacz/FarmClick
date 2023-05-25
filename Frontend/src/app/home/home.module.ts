@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../_shared/shared.module';
+
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -12,8 +12,7 @@ import { SettingsComponent } from './_pages/settings/settings.component';
 import { ShopComponent } from './_pages/shop/shop.component';
 
 @NgModule({
-    declarations: [HomeComponent, NavbarComponent, FooterComponent, GameComponent, ShopComponent, SettingsComponent],
-    imports: [SharedModule, HomeRoutingModule],
+    imports: [HomeRoutingModule, HomeComponent, NavbarComponent, FooterComponent, GameComponent, ShopComponent, SettingsComponent]
 })
 
 export class HomeModule {}

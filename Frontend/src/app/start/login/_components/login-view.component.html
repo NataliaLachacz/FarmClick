@@ -1,0 +1,8 @@
+<div class="login__container">
+    <img src="assets/image/logo.png" alt="logo" />
+    <form [formGroup]="loginForm" (ngSubmit)="tryToLogIn()">
+        <input formControlName="email" class="input" type="email" placeholder="E-mail" />
+        <input formControlName="password" class="input" type="password" placeholder="Password" />
+        <button class="button--yellow">Login</button>
+    </form>
+</div>

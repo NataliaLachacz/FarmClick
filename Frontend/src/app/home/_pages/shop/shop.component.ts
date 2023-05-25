@@ -1,18 +1,21 @@
 import { Plant } from '../../../_shared/models/plant.interface';
 import { Component } from '@angular/core';
-import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
+// import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { plants } from 'src/app/_shared/utils/plants';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/_shared/services/shared.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+    selector: 'app-shop',
+    templateUrl: './shop.component.html',
+    styleUrls: ['./shop.component.scss'],
+    standalone: true,
+    imports: [NgFor, NgIf]
 })
 export class ShopComponent {
-  faArrowLeft = faArrowLeft;
-  faCheck = faCheck;
+  // faArrowLeft = faArrowLeft;
+  // faCheck = faCheck;
   plants: Plant[];
   coins: number;
   private _subscription: Subscription = new Subscription();

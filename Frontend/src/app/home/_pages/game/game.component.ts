@@ -7,9 +7,10 @@ import { SharedService } from "src/app/_shared/services/shared.service";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: "app-game",
-  templateUrl: "./game.component.html",
-  styleUrls: ["./game.component.scss"],
+    selector: "app-game",
+    templateUrl: "./game.component.html",
+    styleUrls: ["./game.component.scss"],
+    standalone: true
 })
 export class GameComponent implements OnInit, OnDestroy {
   clicks: number;

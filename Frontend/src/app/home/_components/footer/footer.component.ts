@@ -1,17 +1,18 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+// import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 import { SharedService } from 'src/app/_shared/services/shared.service';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
+    selector: 'app-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.scss'],
+    standalone: true
 })
 export class FooterComponent implements OnDestroy{
-  faCog = faCog;
+  // faCog = faCog;
   clicks: number;
   private _subscription: Subscription = new Subscription();
 

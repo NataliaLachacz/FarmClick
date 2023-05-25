@@ -1,21 +1,21 @@
 <div class="shop">
-  <div class="object">
-    <div class="object__arrow">
-      <fa-icon [icon]="faArrowLeft" routerLink="../game"></fa-icon>
+    <div class="object">
+        <div class="object__arrow">
+            <!-- <fa-icon [icon]="faArrowLeft" routerLink="../game"></fa-icon> -->
+        </div>
+        <div class="object__name">
+            <h2>Buy more</h2>
+        </div>
+        <ul class="object__plants-list">
+            <li *ngFor="let plant of plants" (click)="tryBuyNewPlant(plant)">
+                <img class="plant" [src]="'assets/image/' + plant.name + '.png'" alt="plant-image" />
+                <p class="plant-name">{{ plant.name }}</p>
+                <p *ngIf="!plant.isUnlock" class="coins-to-unlock">
+                    <img class="coin" src="assets/image/coin.png" alt="coin-icon" />
+                    {{ plant.toUnlock }}
+                </p>
+                <!-- <fa-icon *ngIf="plant.isUnlock" [icon]="faCheck" class="check-icon"></fa-icon> -->
+            </li>
+        </ul>
     </div>
-    <div class="object__name">
-      <h2>Buy more</h2>
-    </div>
-    <ul class="object__plants-list">
-      <li *ngFor="let plant of plants" (click)="tryBuyNewPlant(plant)">
-        <img class="plant" [src]="'assets/image/' + plant.name + '.png'" alt="plant-image">
-        <p class="plant-name">{{plant.name}}</p>
-        <p *ngIf="!plant.isUnlock" class="coins-to-unlock">
-          <img class="coin" src="assets/image/coin.png" alt="coin-icon">
-          {{plant.toUnlock}}
-        </p>
-        <fa-icon *ngIf="plant.isUnlock" [icon]="faCheck" class="check-icon"></fa-icon>
-      </li>
-    </ul>
-  </div>
 </div>
